@@ -1,10 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>edit-user.html для редактирования пользователя</title>
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Edit_user</title>
+    </head>
 
-</body>
+    <body>
+        <H3>page: Edit user</H3>
+        <br/>
+
+
+        <form th:action="@{/users/edit}" th:object="${editUser}" method="post">
+            <input type="hidden" th:field="*{id}">
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" required><br>
+
+            <label for="dateBirth">Date of Birth:</label>
+            <input type="date" id="dateBirth" th:field="*{dateBirth}"><br>
+
+            <label for="city">City:</label>
+            <input type="text" id="city" th:field="*{address.city}" required><br>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" th:field="*{address.address}" required><br>
+
+            <label for="phones">Phones:</label>
+            <div th:each="phone, phoneStat : *{phones}">
+                <input type="text" th:field="*{phones[__${phoneStat.index}__].description}" placeholder="Description">
+                <input type="text" th:field="*{phones[__${phoneStat.index}__].value}" placeholder="Value">
+            </div>
+
+            <label for="emails">Emails:</label>
+            <div th:each="email, emailStat : *{emails}">
+                <input type="text" th:field="*{emails[__${emailStat.index}__].description}" placeholder="Description">
+                <input type="text" th:field="*{emails[__${emailStat.index}__].value}" placeholder="Value">
+            </div>
+
+            <input type="submit" value="Save">
+        </form>
+
+
+
+
+
+
+
+
+
+
+        <br/> <br/> <hr/> <br/>
+        <!--        <th:block th:if="${viewUser != null}">-->
+        <!--            &lt;!&ndash; форма с удалением &ndash;&gt;-->
+        <!--            <b>form with deletion/ user_id=</b>-->
+        <!--            <p th:text="'User ID: ' + ${viewUser.id}"></p>-->
+        <!--        </th:block>-->
+
+        <form th:action="@{/users/edit}" method="get">
+            <input type="hidden" name="user_id" th:value="${viewUser.getId()}" />
+            <button type="submit">Edit this user</button>
+        </form>
+        <br/>
+
+        <!--        <a th:href="@{'/users/delete?user_id=' + ${viewUser.getId()}}">Delete User</a>-->
+
+        <form th:action="@{/users/delete}" method="get">
+            <input type="hidden" name="user_id" th:value="${viewUser.getId()}" />
+            <button type="submit">Delete this user</button>
+        </form>
+        <br/>
+
+        <form th:method="GET" th:action="@{/users/}">
+            <input type="submit" value="To main page"/>
+        </form>
+        <br/>
+    </body>
 </html>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -24,6 +25,7 @@ public class UserServiceImpl implements UserService, TestData {
 
 
     @Override
+    @Transactional
     public void add(User user) {
         userDao.add(user);
     }
@@ -57,21 +59,9 @@ public class UserServiceImpl implements UserService, TestData {
     }
 
 
-    @Transactional
     @Override
     public void generateTestData() {
-        int idIndex = 1;
-        for (User user: USERS) {
-            user.setId(idIndex++);
-            System.out.println(user);
-            userDao.add(user);
-
-            user.setId(idIndex++);
-            System.out.println(user);
-            userDao.add(user);
-        }
-
-//        Arrays.stream(USERS).forEach(userDao::add);
-//        printUsers(get().toArray(User[]::new));
+        Arrays.stream(USERS).forEach(userDao::add);
+        printUsers(get().toArray(User[]::new));
     }
 }

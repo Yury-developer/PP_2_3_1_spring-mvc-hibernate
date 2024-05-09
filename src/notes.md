@@ -34,4 +34,59 @@ setTemplateMode(TemplateMode.HTML): Этот метод устанавливае
 
 setCacheable(false): Этот метод указывает, должен ли Thymeleaf кешировать шаблоны или нет. В данном случае мы устанавливаем значение false, что означает, что кеширование отключено. Это полезно во время разработки, так как при изменении шаблонов нам не нужно будет перезапускать приложение, чтобы увидеть изменения. Однако в производственной среде обычно рекомендуется включить кеширование для улучшения производительности.
 
+---
+
+**@Fetch** - это аннотация из **Hibernate**, которая позволяет настроить **способ извлечения связанных сущностей из базы данных**. Она позволяет управлять стратегией извлечения данных при обращении к коллекциям или ассоциациям.
+
+В Hibernate существует несколько стратегий извлечения данных (FetchMode), которые можно использовать с аннотацией **@Fetch**:
+
+FetchMode.**JOIN**: Эта стратегия используется по умолчанию для связей `@ManyToOne` и `@OneToOne`. Hibernate пытается выполнить запрос с использованием **JOIN**, чтобы извлечь все связанные данные одним запросом. Например:
+```java
+@ManyToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "department_id")
+private Department department;
+```
+
+FetchMode.**SELECT**: Эта стратегия также используется по умолчанию, но она используется для ленивой загрузки (FetchType.LAZY). Hibernate будет выполнять дополнительный запрос, когда потребуется доступ к связанным данным. Например:
+```java
+@OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
+private List<Employee> employees;
+```
+
+FetchMode.**SUBSELECT**: Эта стратегия позволяет выполнить один дополнительный запрос для загрузки всех связанных данных в отдельном запросе. Это может быть полезно, когда у вас есть несколько коллекций, которые должны быть загружены отдельно, чтобы избежать проблем с MultipleBagFetchException. Например:
+```java
+@OneToMany(mappedBy = "user")
+@Fetch(FetchMode.SUBSELECT)
+private List<PhoneEntry> phones;
+```
+
+FetchMode.**LAZY**: Эта стратегия указывает, что связанные данные должны быть загружены лениво, только когда они действительно нужны. Например:
+```java
+@ManyToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "department_id")
+private Department department;
+```
+
+Пример использования **@Fetch**:
+
+```java
+@Entity
+public class User {
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Long id;
+
+    private String name;
+
+    @OneToMany(mappedBy = "user")
+    @Fetch(FetchMode.SUBSELECT)
+    private List<PhoneEntry> phones;
+
+    // геттеры и сеттеры
+}
+```
+
+Этот пример показывает, что при загрузке пользователя также будут загружены все его телефоны одним запросом.
+
+---
 

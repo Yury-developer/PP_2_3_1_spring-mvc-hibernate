@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>All-users</title>
+    <title>All_users</title>
 </head>
 
 <body>
@@ -20,26 +20,36 @@
 
 <table border="2">
     <tr>
-        <th style="width: 50px; background-color: lightcyan;">id</th>
-        <th style="width: 120px; background-color: lightcyan;">FirstName</th>
-        <th style="width: 150px; background-color: lightcyan;">LastName</th>
-        <th style="width: 18%; background-color: lightcyan;">DateBirth</th>
-        <th style="width: 20%; background-color: lightcyan;">Action</th>
+        <th style="width: 20px; background-color: lightcyan;">id</th>
+        <th style="width: 350px; background-color: lightcyan;">Name</th>
+        <th style="width: 20%; background-color: lightcyan;">DateBirth</th>
+        <th style="width: 25%; background-color: lightcyan;">Action</th>
     </tr>
     <tr th:each="itemUser : ${viewAllUsers}">
         <td style="text-align: center;" th:utext="${itemUser.getId()}">id</td>
-        <td th:utext="${itemUser.getPersonality().getFirstName()}">FirstName</td>
-        <td th:utext="${itemUser.getPersonality().getLastName()}">LastName</td>
-        <td style="text-align: center;" th:utext="${itemUser.getPersonality().getDateBirth()}">DateBirth</td>
+        <td th:utext="${itemUser.getName()}">FirstName</td>
+        <td style="text-align: center;" th:utext="${itemUser.getDateBirth()}">DateBirth</td>
         <td style="text-align: center;"> <em> <a th:href="@{/users/view(user_id=${itemUser.getId()})}">View info</a> </em> </td>
     </tr>
 </table>
 
 <br/> <br/> <hr/> <br/>
 
-<form th:method="GET" th:action="@{/users/new/}">
+<form th:method="GET" th:action="@{/users/add/}">
     <input type="submit" value="Create new user"/>
 </form>
+
+<!--<form th:action="@{/users/new}" method="get">-->
+<!--    <input type="hidden" name="user_id" th:value="${viewUser.getId()}" />-->
+<!--    <button type="submit">Create new user</button>-->
+<!--</form>-->
+
+
+<!--это рабочий код с другого проекта-->
+<!--<form th:action="@{/users/delete}" method="get">-->
+<!--    <input type="hidden" name="user_id" th:value="${viewUser.getId()}" />-->
+<!--    <button type="submit">Delete this user</button>-->
+<!--</form>-->
 
 <br/>
 </body>

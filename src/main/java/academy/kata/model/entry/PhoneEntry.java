@@ -32,10 +32,7 @@ public class PhoneEntry {
 
     @Override
     public String toString() {
-        return '{' +
-//                "id=" + id +
-                ", description='" + description + '\'' +
-                ", value='" + value + '\'' +
-                '}';
+        return "description='" + description + '\'' +
+                ", value='" + value + "\n";
     }
 }

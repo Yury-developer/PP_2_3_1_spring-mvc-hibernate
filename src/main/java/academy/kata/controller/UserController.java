@@ -42,13 +42,13 @@ public class UserController {
     public String showAddUserForm(Model model) {
         System.out.println("\n\nUserController: showAddUserForm");
 
-        model.addAttribute("user", new User());
+        model.addAttribute("addedUser", new User());
         return "userPages/add-user";
     }
 
     // ловит и добавляет в базу только что созданного user, затем выкидывает на страницу по умолчанию
     @PostMapping("/add")
-    public String addUser(@ModelAttribute("user") User user) {
+    public String addUser(@ModelAttribute("addedUser") User user) {
         System.out.println("\n\nUserController: addUser, user = " + user);
 
         userService.add(user);
@@ -92,7 +92,7 @@ public class UserController {
 
     // ловит и обновляет в базе отредактированного user, затем выкидывает на страницу по умолчанию
     @PostMapping("/edit")
-    public String editUser(@RequestParam(name = "user_id", required = true) Integer userId, @ModelAttribute("editUser") User user) {
+    public String editUser(@RequestParam(name = "id", required = true) Integer userId, @ModelAttribute("editUser") User user) {
         System.out.println("\n\nUserController: editUser, user_id = " + userId + "\n user = " + user);
 
         userService.update(user);

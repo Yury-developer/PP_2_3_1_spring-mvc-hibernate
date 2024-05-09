@@ -12,57 +12,30 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Address {
+public class Address  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "address_id", updatable = false, nullable = false)
     private int id;
 
-    @Column(name = "flat")
-    private int flat; // квартира
-
-    @Column(name = "home")
-    private int home; // дом
-
-    @Column(name = "corpus")
-    private String corpus; // корпус
-
-    @Column(name = "street")
-    private String street; // улица
-
     @Column(name = "city")
-    private String city; // город
+    private String city;
 
-    @Column(name = "state")
-    private String state; // государство
-
-    @Column(name = "postalCode")
-    private int postalCode; // почтовый индекс
+    @Column(name = "address")
+    private String address;
 
 
-    public Address(int postalCode, String state, String city, String street, int home, int flat, String corpus) {
-        this.flat = flat;
-        this.home = home;
-        this.corpus = corpus;
-        this.street = street;
+    public Address(String city, String address) {
         this.city = city;
-        this.state = state;
-        this.postalCode = postalCode;
+        this.address = address;
     }
 
 
     @Override
     public String toString() {
-        return "Address{" +
-                "id=" + id +
-                ", flat=" + flat +
-                ", home=" + home +
-                ", corpus='" + corpus + '\'' +
-                ", street='" + street + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", postalCode=" + postalCode +
+        return "city='" + city +
+                "; address='" + address +
                 '}';
     }
 }

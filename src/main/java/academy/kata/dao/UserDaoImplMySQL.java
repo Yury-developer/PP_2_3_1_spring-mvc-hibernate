@@ -24,8 +24,9 @@ public class UserDaoImplMySQL implements UserDao, TestData {
 
     @Override
     public void add(User user) {
-        entityManager.merge(user);
-//        entityManager.persist(user);
+//        entityManager.merge(user);
+        user.setId(null);
+        entityManager.persist(user);
     }
 
 

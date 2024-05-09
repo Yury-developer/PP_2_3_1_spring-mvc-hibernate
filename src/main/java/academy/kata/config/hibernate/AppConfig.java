@@ -1,7 +1,6 @@
 package academy.kata.config.hibernate;
 
 import academy.kata.model.*;
-import academy.kata.model.entry.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

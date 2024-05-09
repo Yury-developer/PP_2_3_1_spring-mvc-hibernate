@@ -41,6 +41,4 @@ public class GreetingController {
         userService.generateTestData();
         return "redirect:/users";
     }
-
-
 }
