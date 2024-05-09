@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Greeting page</title>
+    </head>
+
+    <body>
+        <div>
+            <h1 th:text="${greeting}"></h1>
+            <h2 th:text="${greetingMessage}"></h2>
+            <h3 th:text="${author}"></h3>
+        </div>
+
+
+        <br/> <br/> <hr/> <br/>
+
+        <form th:method="GET" th:action="@{/users/}">
+            <input type="submit" value="    Перейти на страницу с решением задачи   "/>
+        </form>
+
+
+        <br/> <br/> <hr/> <br/>
+
+        <form th:method="GET" th:action="@{/generate/}">
+            <input type="submit" value="Генерировать тестовые данные для всех таблиц"/>
+        </form>
+
+        <br/> <br/> <hr/> <br/>
+
+
+    </body>
+</html>
