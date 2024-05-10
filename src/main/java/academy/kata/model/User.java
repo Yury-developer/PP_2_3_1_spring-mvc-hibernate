@@ -13,8 +13,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "users")
-//@Table(name = "users", schema = "your_schema", catalog = "your_catalog", indexes = {}, uniqueConstraints = {}, options = "ENGINE=MyISAM")
+@Table(name = "users") // (name = "users", schema = "your_schema", catalog = "your_catalog", indexes = {}, uniqueConstraints = {}, options = "ENGINE=MyISAM")
 @NoArgsConstructor
 @Getter
 @Setter

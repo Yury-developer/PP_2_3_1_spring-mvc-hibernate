@@ -4,10 +4,7 @@ import academy.kata.model.*;
 import academy.kata.model.entry.*;
 
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 
 public interface TestData {

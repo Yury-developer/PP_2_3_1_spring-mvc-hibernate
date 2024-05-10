@@ -11,32 +11,26 @@
 
         <table border="5">
             <tr>
-                <td style = "width: 150px; background-color: lightcyan; text-align: center;">Parametr</td>
-                <td style = "width: 450px; background-color: lightcyan; text-align: center;">Value</td>
+                <td style = "width: 200px; background-color: lightcyan; text-align: center;">Parameter</td>
+                <td style = "width: 500px; background-color: lightcyan; text-align: center;">Value</td>
             </tr>
-
             <tr>
                 <td  style = "background-color: aqua;"></td>
                 <td style = "background-color: aqua; text-align: center;">Personal info:</td>
             </tr>
 
-
             <tr>
                 <td>User Id</td>
                 <td th:text="${viewUser.getId()}">User Id</td>
             </tr>
-
             <tr>
                 <td>Name</td>
                 <td th:text="${viewUser.getName()}">Name</td>
             </tr>
-
             <tr>
                 <td>Date of Birth</td>
                 <td th:text="${viewUser.getDateBirth()}">dateBirth</td>
             </tr>
-
-
 
             <tr>
                 <td  style = "background-color: aqua;"></td>
@@ -51,140 +45,38 @@
                 <td th:text="${viewUser.getAddress().getAddress()}">Address</td>
             </tr>
 
-
-
             <tr>
                 <td  style = "background-color: aqua;"></td>
-                <td style = "background-color: aqua; text-align: center;">Phones:</td>
+                <td style = "background-color: aqua; text-align: center;">Contacts:</td>
             </tr>
             <tr>
-                <td>Phones</td>
-                <td th:text="${viewUser.getPhones()}">Phones</td>
+                <td>Phones:</td>
+                <td>
+                    <ul>
+                        <li th:each="phone : ${viewUser.phones}">
+                            <span th:text="${phone.description} + ': ' + ${phone.value}"></span>
+                        </li>
+                    </ul>
+                </td>
             </tr>
-
-
             <tr>
-                <td  style = "background-color: aqua;"></td>
-                <td style = "background-color: aqua; text-align: center;">Emails:</td>
+                <td>Emails:</td>
+                <td>
+                    <ul>
+                        <li th:each="phone : ${viewUser.emails}">
+                            <span th:text="${phone.description} + ': ' + ${phone.value}"></span>
+                        </li>
+                    </ul>
+                </td>
             </tr>
-            <tr>
-                <td>Emails</td>
-                <td th:text="${viewUser.getEmails()}">Emails</td>
-            </tr>
-
-
-
-<!--            <tr>-->
-<!--                <td>Postal code</td>-->
-<!--                <td th:text="${viewUser.getAddress().getPostalCode()}">Postal code</td>-->
-<!--            </tr>-->
-
-<!--            <tr>-->
-<!--                <td>State</td>-->
-<!--                <td th:text="${viewUser.getAddress().getState()}">State</td>-->
-<!--            </tr>-->
-
-<!--            <tr>-->
-<!--                <td>City</td>-->
-<!--                <td th:text="${viewUser.getAddress().getCity()}">City</td>-->
-<!--            </tr>-->
-
-<!--            <tr>-->
-<!--                <td>Street</td>-->
-<!--                <td th:text="${viewUser.getAddress().getStreet()}">Street</td>-->
-<!--            </tr>-->
-
-
-<!--            <tr>-->
-<!--                <td>Home</td>-->
-<!--                <td th:text="${viewUser.getAddress().getHome()}">Home</td>-->
-<!--            </tr>-->
-
-
-<!--            <tr>-->
-<!--                <td>Corpus</td>-->
-<!--                <td th:text="${viewUser.getAddress().getCorpus()}">Corpus</td>-->
-<!--            </tr>-->
-
-
-<!--            <tr>-->
-<!--                <td>Flat</td>-->
-<!--                <td th:text="${viewUser.getAddress().getFlat()}">Flat</td>-->
-<!--            </tr>-->
-
-<!--            <tr>-->
-<!--                <td>Street</td>-->
-<!--                <td th:text="${viewUser.getAddress().getStreet()}">Street</td>-->
-<!--            </tr>-->
-
-
-
-<!--            <tr>-->
-<!--                <td></td>-->
-<!--                <td style = "width: 80px; background-color: aqua; text-align: center;">Contacts:</td>-->
-<!--            </tr>-->
-
-<!--            <tr>-->
-<!--                <td>Phone Numbers</td>-->
-<!--                <td th:text="${viewUser.getContact().getPhoneNumbers()}">PhoneNumbers</td>-->
-<!--            </tr>-->
-
-<!--&lt;!&ndash;            телефоны&ndash;&gt;-->
-<!--            <li th:each="phone : ${viewUser.getContact().getPhoneNumbers()}">-->
-<!--                <td>-->
-<!--                    <tr>-->
-<!--                        <span th:text="${phone.getDescription()}">Description</span>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                        <span th:text="${phone.getValue()}">Value</span>-->
-<!--                    </tr>-->
-<!--                </td>-->
-<!--            </li>-->
-<!--&lt;!&ndash;            ***&ndash;&gt;-->
-
-<!--            <tr>-->
-<!--                <td>Emails</td>-->
-<!--                <td th:text="${viewUser.getContact().getEmails()}">Emails</td>-->
-<!--            </tr>-->
-
-<!--            <tr>-->
-<!--                <td>URLs</td>-->
-<!--                <td th:text="${viewUser.getContact().getUrls()}">URLs</td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td>URLs</td>-->
-<!--                <td th:text="${viewUser.getContact().getUrls()}">URLs</td>-->
-<!--            </tr>-->
-
-<!--            <tr>-->
-<!--                <td></td>-->
-<!--                <td style = "width: 80px; background-color: aqua; text-align: center;">Notes:</td>-->
-<!--            </tr>-->
-
-<!--            <tr>-->
-<!--                <td>Notes</td>-->
-<!--                <td th:text="${viewUser.getNotes()}">Notes</td>-->
-<!--            </tr>-->
-
         </table>
-
-<!--        <p th:text="'First Name: ' + ${viewUser.personality.firstName}"></p>-->
-<!--        <p th:text="'Last Name: ' + ${viewUser.personality.lastName}"></p>-->
-<!--        <p th:text="'Date of Birth: ' + ${viewUser.personality.dateBirth}"></p>-->
-
         <br/> <br/> <hr/> <br/>
-<!--        <th:block th:if="${viewUser != null}">-->
-<!--            &lt;!&ndash; форма с удалением &ndash;&gt;-->
-<!--            <b>form with deletion/ user_id=</b>-->
-<!--            <p th:text="'User ID: ' + ${viewUser.id}"></p>-->
-<!--        </th:block>-->
 
         <form th:action="@{/users/edit}" method="get">
             <input type="hidden" name="user_id" th:value="${viewUser.getId()}" />
             <button type="submit">Edit this user</button>
         </form>
         <br/>
-
 <!--        <a th:href="@{'/users/delete?user_id=' + ${viewUser.getId()}}">Delete User</a>-->
 
         <form th:action="@{/users/delete}" method="get">
@@ -194,8 +86,7 @@
         <br/>
 
         <form th:method="GET" th:action="@{/users/}">
-            <input type="submit" value="To main page"/>
+            <input type="submit" value="Go to the main page"/>
         </form>
-        <br/>
     </body>
 </html>

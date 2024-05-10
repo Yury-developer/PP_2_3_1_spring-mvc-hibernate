@@ -20,5 +20,9 @@ public interface UserService {
     void delete(Integer id);
 
 
+    void deletePhone(Integer phoneId);
+    void deleteEmail(Integer emailId);
+
+
     void generateTestData();
 }

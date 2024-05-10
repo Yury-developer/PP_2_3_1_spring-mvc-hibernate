@@ -1,56 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>All_users</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>All_users</title>
+    </head>
 
-<body>
-<H3>page: All users</H3>
-<br/>
+    <body>
+        <H3>page: All users</H3>
+        <br/>
 
-<!--    <div th:each="itemCar : ${arrCars}">-->
-<!--      <a th:href="@{/cars/{id}(id=${itemCar.getId()})}"-->
-<!--         th:text="${itemCar.getId()} + ' '-->
-<!--             + ${itemCar.getModel()} + ' '-->
-<!--             + ${itemCar.getSeries()} + ' '-->
-<!--             + ${itemCar.getColor()}">car</a>-->
-<!--    </div>-->
-<!--    <br/><br/><br/>-->
+        <table border="2">
+            <tr>
+                <th style="width: 20px; background-color: lightcyan;">id</th>
+                <th style="width: 350px; background-color: lightcyan;">Name</th>
+                <th style="width: 20%; background-color: lightcyan;">DateBirth</th>
+                <th style="width: 25%; background-color: lightcyan;">Action</th>
+            </tr>
+            <tr th:each="itemUser : ${viewAllUsers}">
+                <td style="text-align: center;" th:utext="${itemUser.getId()}">id</td>
+                <td th:utext="${itemUser.getName()}">FirstName</td>
+                <td style="text-align: center;" th:utext="${itemUser.getDateBirth()}">DateBirth</td>
+                <td style="text-align: center;"> <em> <a th:href="@{/users/view(user_id=${itemUser.getId()})}">View info</a> </em> </td>
+            </tr>
+        </table>
+        <br/> <br/> <hr/> <br/>
 
-<table border="2">
-    <tr>
-        <th style="width: 20px; background-color: lightcyan;">id</th>
-        <th style="width: 350px; background-color: lightcyan;">Name</th>
-        <th style="width: 20%; background-color: lightcyan;">DateBirth</th>
-        <th style="width: 25%; background-color: lightcyan;">Action</th>
-    </tr>
-    <tr th:each="itemUser : ${viewAllUsers}">
-        <td style="text-align: center;" th:utext="${itemUser.getId()}">id</td>
-        <td th:utext="${itemUser.getName()}">FirstName</td>
-        <td style="text-align: center;" th:utext="${itemUser.getDateBirth()}">DateBirth</td>
-        <td style="text-align: center;"> <em> <a th:href="@{/users/view(user_id=${itemUser.getId()})}">View info</a> </em> </td>
-    </tr>
-</table>
-
-<br/> <br/> <hr/> <br/>
-
-<form th:method="GET" th:action="@{/users/add/}">
-    <input type="submit" value="Create new user"/>
-</form>
-
-<!--<form th:action="@{/users/new}" method="get">-->
-<!--    <input type="hidden" name="user_id" th:value="${viewUser.getId()}" />-->
-<!--    <button type="submit">Create new user</button>-->
-<!--</form>-->
-
-
-<!--это рабочий код с другого проекта-->
-<!--<form th:action="@{/users/delete}" method="get">-->
-<!--    <input type="hidden" name="user_id" th:value="${viewUser.getId()}" />-->
-<!--    <button type="submit">Delete this user</button>-->
-<!--</form>-->
-
-<br/>
-</body>
+        <form th:method="GET" th:action="@{/users/add/}">
+            <input type="submit" value="Create new user"/>
+        </form>
+    </body>
 </html>

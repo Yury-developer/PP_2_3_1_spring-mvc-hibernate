@@ -24,8 +24,6 @@ public class GreetingController {
     // отдает страницу для создания нового пользователя
     @GetMapping
     public String greetingPage(Model model) {
-        System.out.println("\n\nGreetingController: greetingPage");
-
         model.addAttribute("greeting", "Hello!");
         model.addAttribute("greetingMessage", "Практическая задача 2.3.1 Java pre-project. Задача 2.3.1. Spring MVC + Hibernate.");
         model.addAttribute("author", "Выполнил: Лапицкий Юрий   //   Performed by: Yury Lapitski");
@@ -36,8 +34,6 @@ public class GreetingController {
     @Transactional
     @GetMapping(value = "/generate")
     public String generateTestData() {
-        System.out.println("\n\nGreetingController: generateTestData");
-
         userService.generateTestData();
         return "redirect:/users";
     }
