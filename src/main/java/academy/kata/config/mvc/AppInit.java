@@ -35,8 +35,6 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
     }
 
 
-
-    // так кто-то из наших делал /nikola-ydarnik
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         super.onStartup(servletContext);
@@ -46,14 +44,7 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
         encodingFilter.addMappingForUrlPatterns(null, true, "/*");
     }
 
-//    // Добавил я отсюда: https://github.com/NeilAlishev/SpringCourse/blob/master/Lesson23.CRUD_App3/src/main/java/ru/alishev/springcourse/config/MySpringMvcDispatcherSerlvetIntitializer.java
-//    @Override
-//    public void onStartup(ServletContext aServletContext) throws ServletException {
-//        super.onStartup(aServletContext);
-//        registerHiddenFieldFilter(aServletContext);
-//    }
-//
-//
+
     private void registerHiddenFieldFilter(ServletContext aContext) {
         aContext.addFilter("hiddenHttpMethodFilter",
                 new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null ,true, "/*"); // Добавляем фильтр для работы со скрытым полем

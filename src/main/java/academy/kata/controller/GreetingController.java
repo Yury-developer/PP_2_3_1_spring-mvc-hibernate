@@ -16,10 +16,12 @@ public class GreetingController {
 
     private final UserService userService;
 
+
     @Autowired
     public GreetingController(UserService userService) {
         this.userService = userService;
     }
+
 
     // отдает страницу для создания нового пользователя
     @GetMapping

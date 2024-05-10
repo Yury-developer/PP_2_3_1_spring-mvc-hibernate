@@ -60,17 +60,6 @@ public class UserServiceImpl implements UserService, TestData {
 
 
     @Override
-    public void deletePhone(Integer phoneId){
-        userDao.deletePhone(phoneId);
-    }
-
-    @Override
-    public void deleteEmail(Integer emailId){
-        userDao.deleteEmail(emailId);
-    }
-
-
-    @Override
     public void generateTestData() {
         Arrays.stream(USERS).forEach(userDao::add);
         printUsers(get().toArray(User[]::new));

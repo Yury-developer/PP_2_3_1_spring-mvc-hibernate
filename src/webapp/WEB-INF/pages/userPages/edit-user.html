@@ -31,18 +31,22 @@
             <div th:each="phone, phoneStat : *{phones}">
                 <input type="text" th:field="*{phones[__${phoneStat.index}__].description}" placeholder="Description">
                 <input type="text" th:field="*{phones[__${phoneStat.index}__].value}" placeholder="Value">
-                <a th:href="@{'/users/deletePhone?user_id=' + ${editUser.id} + '&phone_id=' + ${phone.id}}">Delete this phone number</a>
-                <a th:href="@{'/users/deletePhone?user_id=' + ${editUser.id} + '&phone=' + ${phone}}">Delete this phone number!</a>
+                <a th:href="@{'/users/deletePhone?user_id=' + ${editUser.id} + '&phone_id=' + ${phoneStat.index}}">Delete this phone number</a>
             </div>
-            <br/>
+
+            <a th:href="@{/users/addPhone(user_id=${editUser.id})}">Add phone number</a>
+            <br/> <br/> <br/>
 
             <label for="emails">Emails:</label>
             <div th:each="email, emailStat : *{emails}">
                 <input type="text" th:field="*{emails[__${emailStat.index}__].description}" placeholder="Description">
                 <input type="text" th:field="*{emails[__${emailStat.index}__].value}" placeholder="Value">
-                <a th:href="@{'/users/deleteEmail?user_id=' + ${editUser.id} + '&email_id=' + ${email.id}}">Delete this e-mail</a>
+                <a th:href="@{'/users/deleteEmail?user_id=' + ${editUser.id} + '&email_id=' + ${emailStat.index}}">Delete this e-mail</a>
             </div>
-            <br/>
+
+
+            <a th:href="@{/users/addEmail(user_id=${editUser.id})}">Add email</a>
+            <br/> <br/> <br/>
 
             <input type="submit" value="Save">
         </form>

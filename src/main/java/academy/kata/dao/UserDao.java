@@ -20,9 +20,4 @@ public interface UserDao {
     void update(User user);
 
     void delete(Integer id);
-
-
-    void deletePhone(Integer phoneId);
-
-    void deleteEmail(Integer emailId);
 }

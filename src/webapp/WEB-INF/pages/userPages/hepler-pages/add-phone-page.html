@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Add Phone page</title>
+    </head>
+
+    <body>
+        <H3>page: Add Phone number</H3>
+        <br/>
+
+        <form th:action="@{/users/savePhone}" method="post">
+            <input type="hidden" th:name="user_id" th:value="${user_id}" />
+
+            <label for="description">Description:</label>
+            <input type="text" id="description" th:field="*{phone_entry.description}" placeholder="Phone description"><br>
+            <br/>
+
+            <label for="value">Value:</label>
+            <input type="text" id="value" th:field="*{phone_entry.value}" placeholder="Phone number"><br>
+            <br/> <br/>
+
+            <input type="submit" value="Add this phone number">
+        </form>
+        <br/> <br/> <hr/> <br/>
+
+        <form th:action="@{/users/edit}" method="get">
+            <input type="hidden" name="user_id" th:value="${user_id}" />
+            <button type="submit">Go back to the page "Edit this user"</button>
+        </form>
+        <br/> <br/>
+
+        <form th:method="GET" th:action="@{/users/}">
+            <input type="submit" value="Go to the main page"/>
+        </form>
+    </body>
+</html>

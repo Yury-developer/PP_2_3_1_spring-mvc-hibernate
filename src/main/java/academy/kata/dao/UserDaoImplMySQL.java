@@ -24,7 +24,6 @@ public class UserDaoImplMySQL implements UserDao, TestData {
 
     @Override
     public void add(User user) {
-        user.setId(null);
         entityManager.persist(user);
     }
 
@@ -47,7 +46,6 @@ public class UserDaoImplMySQL implements UserDao, TestData {
     public List<User> get() {
         TypedQuery<User> query = entityManager.createQuery("from User", User.class);
         return query.getResultList();
-//        return entityManager.createQuery("SELECT u FROM User u", User.class).getResultList();
     }
 
 
@@ -61,21 +59,6 @@ public class UserDaoImplMySQL implements UserDao, TestData {
     public void delete(Integer id) {
         Query query = entityManager.createQuery("DELETE FROM User u WHERE u.id = :id");
         query.setParameter("id", id);
-        query.executeUpdate();
-    }
-
-
-    @Override
-    public void deletePhone(Integer phoneId) {
-        Query query = entityManager.createQuery("DELETE FROM PhoneEntry u WHERE u.id = :id");
-        query.setParameter("id", phoneId);
-        query.executeUpdate();
-    }
-
-    @Override
-    public void deleteEmail(Integer emailId) {
-        Query query = entityManager.createQuery("DELETE FROM EmailEntry u WHERE u.id = :id");
-        query.setParameter("id", emailId);
         query.executeUpdate();
     }
 }
