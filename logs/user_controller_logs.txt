@@ -1,0 +1,2 @@
+2024-05-11 18:15:43 FINE academy.kata.controller.UserController showAllUsers UserController: showAllUsers
+2024-05-11 18:15:52 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl perform HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'

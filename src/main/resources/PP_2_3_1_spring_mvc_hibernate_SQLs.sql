@@ -1,3 +1,4 @@
+# При разработке часто использовались запросы, вывел в этот фаил.
 DROP DATABASE IF EXISTS`PP_2_3_1_spring_mvc_hibernate`;
 CREATE SCHEMA IF NOT EXISTS `PP_2_3_1_spring_mvc_hibernate` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
 
@@ -12,10 +13,11 @@ SELECT * FROM PP_2_3_1_spring_mvc_hibernate.emails;
 TRUNCATE TABLE users;
 DROP TABLE IF EXISTS users;
 
-drop table if exists users;
 drop table if exists address;
 drop table if exists phones;
 drop table if exists emails;
+drop table if exists users;
+
 
 create table emails (emailEntry_id integer not null auto_increment, emailEntry_description varchar(255), emailEntry_value varchar(255), fk_emailEntry_id integer, primary key (emailEntry_id)) engine=MyISAM;
 create table phones (phoneEntry_id integer not null auto_increment, phoneEntry_description varchar(255), phoneEntry_value varchar(255), fk_phoneEntry_id integer, primary key (phoneEntry_id)) engine=MyISAM;
