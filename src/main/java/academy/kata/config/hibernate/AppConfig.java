@@ -24,7 +24,7 @@ import java.util.Properties;
 @ComponentScan(value = "academy.kata")
 public class AppConfig {
 
-    private Environment env;
+    private final Environment env;
 
 
     @Autowired

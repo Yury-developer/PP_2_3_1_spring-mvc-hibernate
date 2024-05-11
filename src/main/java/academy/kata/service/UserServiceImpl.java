@@ -25,24 +25,20 @@ public class UserServiceImpl implements UserService, TestData {
 
 
     @Override
-    @Transactional
     public void add(User user) {
         userDao.add(user);
     }
 
-    @Transactional(readOnly = true)
     @Override
     public User get(Integer id) {
         return userDao.get(id);
     }
 
-    @Transactional(readOnly = true)
     @Override
     public List<User> get(Integer startId, Integer count) {
         return userDao.get(startId, count);
     }
 
-    @Transactional(readOnly = true)
     @Override
     public List<User> get() {
         return userDao.get();
@@ -62,6 +58,5 @@ public class UserServiceImpl implements UserService, TestData {
     @Override
     public void generateTestData() {
         Arrays.stream(USERS).forEach(userDao::add);
-        printUsers(get().toArray(User[]::new));
     }
 }
