@@ -16,6 +16,7 @@
                 <th style="width: 20%; background-color: lightcyan;">DateBirth</th>
                 <th style="width: 25%; background-color: lightcyan;">Action</th>
             </tr>
+
             <tr th:each="itemUser : ${viewAllUsers}">
                 <td style="text-align: center;" th:utext="${itemUser.getId()}">id</td>
                 <td th:utext="${itemUser.getName()}">FirstName</td>

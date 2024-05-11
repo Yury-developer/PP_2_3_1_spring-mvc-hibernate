@@ -77,7 +77,6 @@
             <button type="submit">Edit this user</button>
         </form>
         <br/>
-<!--        <a th:href="@{'/users/delete?user_id=' + ${viewUser.getId()}}">Delete User</a>-->
 
         <form th:action="@{/users/delete}" method="get">
             <input type="hidden" name="user_id" th:value="${viewUser.getId()}" />

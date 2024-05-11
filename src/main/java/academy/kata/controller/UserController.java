@@ -22,7 +22,7 @@ import academy.kata.service.UserService;
 
 /**
  * @Author: Yury Lapitski
- * 2024-05-05
+ * 2024-05-11
  */
 @Controller
 @RequestMapping(value = "/users")
@@ -122,10 +122,6 @@ public class UserController {
         LOGGER.fine("UserController: showEditUserForm, user_id = " + userId);
         User user = userService.get(userId);
         model.addAttribute("editUser", user);
-
-
-//        System.out.println("\n\n\t!!!" + rootPathProvider.getRootPath() + "\t!!!\n\n");
-
         return "userPages/edit-user";
     }
 
