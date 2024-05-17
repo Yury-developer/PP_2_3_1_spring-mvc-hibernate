@@ -1,1 +1,2 @@
 2024-05-17 21:47:38 FINE academy.kata.controller.UserController showAllUsers UserController: showAllUsers
+2024-05-17 21:47:50 FINE academy.kata.controller.UserController showUserDetails UserController: showUserDetails, user_id = 1
