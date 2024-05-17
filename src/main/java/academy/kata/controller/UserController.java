@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
+
+import java.time.LocalDate;
 
 
 /**
@@ -62,7 +65,13 @@ public class UserController {
     @GetMapping("/add")
     public String showAddUserForm(Model model) {
         LOGGER.fine("UserController: showAddUserForm");
-        model.addAttribute("addedUser", new User());
+
+        String name = "no_name";
+        LocalDate localDate = LocalDate.now();   // Получаем текущую дату как LocalDate
+        Date sqlDate = Date.valueOf(localDate);   // Преобразуем LocalDate в java.sql.Date
+        String address = "no_address";
+
+        model.addAttribute("addedUser", new User(name, sqlDate, address));
         return "userPages/add-user";
     }
 
