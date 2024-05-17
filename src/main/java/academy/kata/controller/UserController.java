@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 
 
 /**
- * @Author: Yury Lapitski
+ * Author: Yury Lapitski
  * 2024-05-17
  */
 @Controller
@@ -39,6 +39,7 @@ public class UserController {
             LOGGER = Logger.getLogger(UserController.class.getName());
             LOGGER.setLevel(Level.ALL);
         } catch (IOException e) {
+            System.out.println("class UserController: error initializing the logger // IOException");
             e.printStackTrace();
             LOGGER = null; // Или другое действие по умолчанию
         }

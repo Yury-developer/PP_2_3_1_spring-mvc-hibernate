@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface TestData {
 
+    @SuppressWarnings("deprecation")
     User[] USERS = {
             new User("Abybakirov Andry Alexandrovich",
                     new Date(90, 0, 1),   // Params:   year – the year minus 1900; must be 0 to 8099. (Note that 8099 is 9999 minus 1900.)   /   month – 0 to 11   /   day – 1 to 31
@@ -52,7 +53,7 @@ public interface TestData {
                             new EmailEntry("home email3", "workEmail043@mail.ru"))), // (int postalCode, String state, String city, String street, int home, int flat, String corpus)
 
             new User("Ленин Владимир Ильич",
-                    new Date(-30, 03, 22),   // Params:   year – the year minus 1900; must be 0 to 8099. (Note that 8099 is 9999 minus 1900.)   /   month – 0 to 11   /   day – 1 to 31
+                    new Date(-30, 3, 22),   // Params:   year – the year minus 1900; must be 0 to 8099. (Note that 8099 is 9999 minus 1900.)   /   month – 0 to 11   /   day – 1 to 31
                     new Address("Москва", "Кремль"),
                     List.of(
                             new PhoneEntry("work phone", "+375 29 555-00-01"),
@@ -61,12 +62,6 @@ public interface TestData {
                             new EmailEntry("work email", "workEmail051@mail.ru"),
                             new EmailEntry("home email", "workEmail052@mail.ru")))
     };
-
-    default void printUsers(User... users) {
-        for (User user : users) {
-            System.out.println(user);
-        }
-    }
 }
 
 
