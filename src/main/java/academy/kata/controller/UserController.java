@@ -20,8 +20,8 @@ import java.util.logging.Logger;
 
 
 /**
- * @Author: Yury Lapitski
- * 2024-05-11
+ * Author: Yury Lapitski
+ * 2024-05-17
  */
 @Controller
 @RequestMapping(value = "/users")
@@ -39,6 +39,7 @@ public class UserController {
             LOGGER = Logger.getLogger(UserController.class.getName());
             LOGGER.setLevel(Level.ALL);
         } catch (IOException e) {
+            System.out.println("class UserController: error initializing the logger // IOException");
             e.printStackTrace();
             LOGGER = null; // Или другое действие по умолчанию
         }
@@ -75,7 +76,6 @@ public class UserController {
     }
 
 
-
     @GetMapping("/view")
     public String showUserDetails(@RequestParam(defaultValue = "0", required = false, name = "user_id") Integer userId,
                                   Model model) {
@@ -86,16 +86,13 @@ public class UserController {
     }
 
 
-
     @GetMapping()
     public String showAllUsers(Model model) {
         LOGGER.fine("UserController: showAllUsers");
         List<User> userList = userService.get();
-        userList.stream().forEach(System.out::println);
         model.addAttribute("viewAllUsers", userList);
         return "userPages/all-users";
     }
-
 
 
     @GetMapping("/edit")
@@ -116,14 +113,13 @@ public class UserController {
     }
 
 
-
     @GetMapping("/addPhone")
     public String addPhone(@RequestParam(name = "user_id") Integer userId,
                            Model model) {
         LOGGER.fine("UserController: addPhone, \n\tuser_id = " + userId);
         model.addAttribute("user_id", userId);
         model.addAttribute("phone_entry", new PhoneEntry());
-        return "userPages/hepler-pages/add-phone-page";
+        return "userPages/helper-pages/add-phone-page";
     }
 
     @PostMapping("/savePhone")
@@ -141,16 +137,10 @@ public class UserController {
                               @RequestParam(name = "phone_id") Integer phoneId,
                               Model model) {
         LOGGER.fine("UserController: deletePhone, \tuser_id = " + userId + "\tphone_id = " + phoneId);
-        User user = userService.get(userId);
-        user.getPhones().remove(user.getPhones().get(phoneId));
-        if (user.getPhones().isEmpty()) {
-            user.getPhones().add(new PhoneEntry("", ""));
-        }
-        userService.update(user);
+        User user = userService.deletePhone(userId, phoneId);
         model.addAttribute("editUser", user);
         return "redirect:/users/edit?user_id=" + userId;
     }
-
 
 
     @GetMapping("/addEmail")
@@ -159,7 +149,7 @@ public class UserController {
         LOGGER.fine("UserController: addPhone, \tuser_id = " + userId);
         model.addAttribute("user_id", userId);
         model.addAttribute("email_entry", new EmailEntry());
-        return "userPages/hepler-pages/add-email-page";
+        return "userPages/helper-pages/add-email-page";
     }
 
     @PostMapping("/saveEmail")
@@ -177,16 +167,10 @@ public class UserController {
                               @RequestParam(name = "email_id") Integer emailId,
                               Model model) {
         LOGGER.fine("UserController: deleteEmail, \tuser_id = " + userId + "\tphone_id = " + emailId);
-        User user = userService.get(userId);
-        user.getEmails().remove(user.getEmails().get(emailId));
-        if (user.getEmails().isEmpty()) {
-            user.getEmails().add(new EmailEntry("", ""));
-        }
-        userService.update(user);
+        User user = userService.deleteEmail(userId, emailId);
         model.addAttribute("editUser", user);
         return "redirect:/users/edit?user_id=" + userId;
     }
-
 
 
     @GetMapping("/delete")
