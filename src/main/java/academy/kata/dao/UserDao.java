@@ -11,9 +11,9 @@ public interface UserDao {
 
     void add(User user);
 
-    User get(Integer id);
+    User getById(Integer id);
 
-    List<User> get();
+    List<User> getAll();
 
     void update(User user);
 

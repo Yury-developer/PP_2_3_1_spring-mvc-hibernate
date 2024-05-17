@@ -31,43 +31,9 @@
                 <td>Date of Birth</td>
                 <td th:text="${viewUser.getDateBirth()}">dateBirth</td>
             </tr>
-
-            <tr>
-                <td  style = "background-color: aqua;"></td>
-                <td style = "background-color: aqua; text-align: center;">Address:</td>
-            </tr>
-            <tr>
-                <td>City</td>
-                <td th:text="${viewUser.getAddress().getCity()}">City</td>
-            </tr>
             <tr>
                 <td>Address</td>
-                <td th:text="${viewUser.getAddress().getAddress()}">Address</td>
-            </tr>
-
-            <tr>
-                <td  style = "background-color: aqua;"></td>
-                <td style = "background-color: aqua; text-align: center;">Contacts:</td>
-            </tr>
-            <tr>
-                <td>Phones:</td>
-                <td>
-                    <ul>
-                        <li th:each="phone : ${viewUser.phones}">
-                            <span th:text="${phone.description} + ': ' + ${phone.value}"></span>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Emails:</td>
-                <td>
-                    <ul>
-                        <li th:each="phone : ${viewUser.emails}">
-                            <span th:text="${phone.description} + ': ' + ${phone.value}"></span>
-                        </li>
-                    </ul>
-                </td>
+                <td th:text="${viewUser.getAddress()}">Address</td>
             </tr>
         </table>
         <br/> <br/> <hr/> <br/>

@@ -1,15 +1,11 @@
 package academy.kata.model;
 
-import academy.kata.model.entry.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.List;
 
 
 @Entity
@@ -30,26 +26,14 @@ public class User {
     @Column(name = "dateBirth")
     private Date dateBirth;
 
-    @JoinColumn(name = "fk_address_id", referencedColumnName = "address_id")
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private Address address;
-
-    @JoinColumn(name = "fk_phoneEntry_id", referencedColumnName = "user_id")
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<PhoneEntry> phones;
-
-    @JoinColumn(name = "fk_emailEntry_id", referencedColumnName = "user_id")
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @Fetch(FetchMode.SUBSELECT)
-    private List<EmailEntry> emails;
+    @Column(name = "address")
+    private String address;
 
 
-    public User(String name, Date dateBirth, Address address, List<PhoneEntry> phones, List<EmailEntry> emails) {
-        this.emails = emails;
-        this.phones = phones;
-        this.address = address;
-        this.dateBirth = dateBirth;
+    public User(String name, Date dateBirth, String address) {
         this.name = name;
+        this.dateBirth = dateBirth;
+        this.address = address;
     }
 
 
@@ -59,9 +43,7 @@ public class User {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", dateBirth=" + dateBirth +
-                ", address=" + address +
-                ", phones=" + phones +
-                ", emails=" + emails +
+                ", address='" + address + '\'' +
                 '}';
     }
 }

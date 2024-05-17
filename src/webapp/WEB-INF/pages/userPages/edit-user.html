@@ -11,42 +11,19 @@
 
         <form th:action="@{/users/edit}" th:object="${editUser}" method="post">
             <input type="hidden" th:field="*{id}">
+
             <label for="name">Name:</label>
             <input type="text" id="name" th:field="*{name}" required>
             <br/>
 
             <label for="dateBirth">Date of Birth:</label>
-            <input type="date" id="dateBirth" th:field="*{dateBirth}">
+            <input type="date" id="dateBirth" th:field="*{dateBirth}" required>
             <br/> <br/>
 
-            <label for="city">City:</label>
-            <input type="text" id="city" th:field="*{address.city}" required>
-            <br/>
+            <label for="user_address">User address:</label>
+            <input type="text" id="user_address" th:field="*{address}">
 
-            <label for="address">Address:</label>
-            <input type="text" id="address" th:field="*{address.address}" required>
             <br/> <br/> <br/>
-
-            <label for="phones">Phones:</label>
-            <div th:each="phone, phoneStat : *{phones}">
-                <input type="text" th:field="*{phones[__${phoneStat.index}__].description}" placeholder="Description">
-                <input type="text" th:field="*{phones[__${phoneStat.index}__].value}" placeholder="Value">
-                <a th:href="@{'/users/deletePhone?user_id=' + ${editUser.id} + '&phone_id=' + ${phoneStat.index}}">Delete this phone number</a>
-            </div>
-
-            <a th:href="@{/users/addPhone(user_id=${editUser.id})}">Add phone number</a>
-            <br/> <br/> <br/>
-
-            <label for="emails">Emails:</label>
-            <div th:each="email, emailStat : *{emails}">
-                <input type="text" th:field="*{emails[__${emailStat.index}__].description}" placeholder="Description">
-                <input type="text" th:field="*{emails[__${emailStat.index}__].value}" placeholder="Value">
-                <a th:href="@{'/users/deleteEmail?user_id=' + ${editUser.id} + '&email_id=' + ${emailStat.index}}">Delete this e-mail</a>
-            </div>
-
-            <a th:href="@{/users/addEmail(user_id=${editUser.id})}">Add email</a>
-            <br/> <br/> <br/>
-
             <input type="submit" value="Save">
         </form>
         <br/> <hr/> <br/> <br/>

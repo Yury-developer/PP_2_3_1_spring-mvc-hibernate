@@ -29,12 +29,13 @@ public class UserDaoImpl implements UserDao, TestData {
 
 
     @Override
-    public User get(Integer id) {
+    public User getById(Integer id) {
         return entityManager.find(User.class, id);
     }
 
+
     @Override
-    public List<User> get() {
+    public List<User> getAll() {
         TypedQuery<User> query = entityManager.createQuery("from User", User.class);
         return query.getResultList();
     }
