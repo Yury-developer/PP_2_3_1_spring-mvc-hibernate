@@ -13,8 +13,6 @@ public interface UserDao {
 
     User get(Integer id);
 
-    List<User> get(Integer start_id, Integer count);
-
     List<User> get();
 
     void update(User user);

@@ -1,2 +1,8 @@
-2024-05-11 18:15:43 FINE academy.kata.controller.UserController showAllUsers UserController: showAllUsers
-2024-05-11 18:15:52 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl perform HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2024-05-17 08:51:46 FINE academy.kata.controller.UserController showEditUserForm UserController: showEditUserForm, user_id = 1
+2024-05-17 08:51:50 FINE academy.kata.controller.UserController addEmail UserController: addPhone, 	user_id = 1
+2024-05-17 08:51:53 FINE academy.kata.controller.UserController saveEmail UserController: saveEmail, user_id = 1 email_entry = description='уу', value='у
+
+2024-05-17 08:51:54 FINE academy.kata.controller.UserController showAllUsers UserController: showAllUsers
+2024-05-17 08:51:56 FINE academy.kata.controller.UserController showUserDetails UserController: showUserDetails, user_id = 1
+2024-05-17 08:52:04 FINE academy.kata.controller.UserController deleteUser UserController: deleteUser, user_id = 1
+2024-05-17 08:52:04 FINE academy.kata.controller.UserController showAllUsers UserController: showAllUsers
