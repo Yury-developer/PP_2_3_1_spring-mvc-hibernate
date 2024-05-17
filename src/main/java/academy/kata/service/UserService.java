@@ -11,13 +11,15 @@ public interface UserService {
 
     User get(Integer id);
 
-    List<User> get(Integer startId, Integer count);
-
     List<User> get();
 
     void update(User user);
 
     void delete(Integer id);
+
+    User deletePhone(Integer userId, Integer phoneId);
+
+    User deleteEmail(Integer userId, Integer emailId);
 
 
     void generateTestData();
